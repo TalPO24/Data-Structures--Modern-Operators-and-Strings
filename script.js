@@ -52,39 +52,96 @@ const restaurant = {
 
 };
 
-// 1) Destructuring
-// SPREAD, because on RIGHT side of =
-const arr = [1, 2, ...[3, 4]]
-
-// REST, because on LEFT side of =
-const [a, b, ...others] = [1, 2, 3, 4, 5]
-console.log(a, b, others);
-
-const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, restaurant.starterMenu]
-console.log(pizza, risotto, otherFood)
-
-//* Objects
-const { sat, ...weekdays } = restaurant.openingHours;
-console.log(weekdays)
-
-
-// 2) Functions
-const add = function(...numbers) {
-    let sum = 0
-    for (let i = 0; i < numbers.length; i++) sum += numbers[i]
-    console.log(sum)
+/*
+const rest1 = {
+    name: 'Capri',
+    numGuests: 20,
 }
-add(2, 3)
-add(5, 3, 7, 2)
-add(8, 2, 5, 3, 2, 1, 4)
+
+const rest2 = {
+    name: 'La Piazza',
+    owner: 'Giovanni Rossi',
+}
+
+rest1.numGuests = rest1.numGuests || 10
+rest2.numGuests = rest2.numGuests || 10
 
 
-const x = [23, 5, 7]
-add(...x)
+console.log(rest1)
+console.log(rest2)
+*/
+
+/*
+//* Short Circuiting (&& and ||)
+console.log('-------OR------')
+//* Use ANY  data type, return ANY data type, short-circuiting
+console.log(3 || 'Jonas')
+console.log('' || 'Jonas')
+console.log(true || 0)
+console.log(undefined || null)
+console.log(undefined || 0 || '' || 'hello' || 23 || null)
+
+restaurant.numGuests = 23
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10
+console.log(guests1)
+
+const guests2 = restaurant.numGuests || 10
+console.log(guests2)
 
 
-restaurant.orderPizza('Mushrooms', 'onion', 'olivse', 'spinach')
-restaurant.orderPizza('mushrooms')
+console.log('-------AND------')
+console.log(0 && 'Jonas')
+console.log(7 && 'Jonas')
+console.log('hello' && 23 && null && 'Jonas')
+
+if (restaurant.orderPizza) {
+    restaurant.orderPizza('mushrooms', 'spinach')
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach')
+*/
+
+
+
+
+/*
+    //* Rest pattern and operators
+    // 1) Destructuring
+    // SPREAD, because on RIGHT side of =
+    const arr = [1, 2, ...[3, 4]]
+
+    // REST, because on LEFT side of =
+    const [a, b, ...others] = [1, 2, 3, 4, 5]
+    console.log(a, b, others);
+
+    const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, restaurant.starterMenu]
+    console.log(pizza, risotto, otherFood)
+
+    //* Objects
+    const { sat, ...weekdays } = restaurant.openingHours;
+    console.log(weekdays)
+
+
+    // 2) Functions
+    const add = function(...numbers) {
+        let sum = 0
+        for (let i = 0; i < numbers.length; i++) sum += numbers[i]
+        console.log(sum)
+    }
+    add(2, 3)
+    add(5, 3, 7, 2)
+    add(8, 2, 5, 3, 2, 1, 4)
+
+
+    const x = [23, 5, 7]
+    add(...x)
+
+
+    restaurant.orderPizza('Mushrooms', 'onion', 'olivse', 'spinach')
+    restaurant.orderPizza('mushrooms')
+    */
+
+
 
 /*
 //* The Spread Operator
@@ -168,3 +225,77 @@ console.log(a, b);
 const { fri: { open: o, close: c } } = openingHours
 console.log(o, c)
 */
+
+//* TK
+const game = {
+    team1: 'Bayern Munich',
+    team2: 'Borrussia Dortmund',
+    players: [
+        [
+            'Neuer',
+            'Pavard',
+            'Martinez',
+            'Alaba',
+            'Davies',
+            'Kimmich',
+            'Goretzka',
+            'Coman',
+            'Muller',
+            'Gnarby',
+            'Lewandowski',
+        ],
+        [
+            'Burki',
+            'Schulz',
+            'Hummels',
+            'Akanji',
+            'Hakimi',
+            'Weigl',
+            'Witsel',
+            'Hazard',
+            'Brandt',
+            'Sancho',
+            'Gotze',
+        ],
+    ],
+    score: '4:0',
+    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+    date: 'Nov 9th, 2037',
+    odds: {
+        team1: 1.33,
+        x: 3.25,
+        team2: 6.5,
+    },
+};
+
+// 1)
+const [players1, players2] = game.players
+console.log(players1, players2)
+
+// 2)
+const [gk, ...fieldPlayers] = game.players
+console.log(gk, fieldPlayers)
+
+// 3)
+const allPlayers = [...players1, ...players2]
+console.log(allPlayers)
+
+// 4)
+const players1Final = [...players1, 'Thiago', 'Coutinho', "Periscic"]
+console.log(players1Final)
+
+// 5)
+const { odds: { team1, x: draw, team2 } } = game
+console.log(draw, team1, team2)
+
+// 6)
+const printGoal = function(...players) {
+        console.log(`${players.length} goals were scored`)
+    }
+    // printGoal('Davies', 'Muller', 'Lewandowski', 'Kimmich')
+    // printGoal('Davies', 'Muller')
+printGoal(...game.scored)
+
+// 7)
+team1 < team2 && console.log('Team 1 is more likly to win')
+team1 > team2 && console.log('Team 2 is more likly to win')
