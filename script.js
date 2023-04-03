@@ -52,7 +52,40 @@ const restaurant = {
     }
 };
 
+//* MAPS
+// MAP is a data structure that we can use to map values to keys. So, just like an object data is stored in key value pairs in maps.
 
+const rest = new Map()
+rest.set('name', 'Classico Italiano') // first element in the array 
+rest.set(1, 'Firenze, Italy') // second element in the array 
+rest.set(2, 'Lisbon, Portugal') // third element in the array 
+rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic']) // fourth element in the array 
+    .set('open', 11) // fifth element in the array 
+    .set('close', 23) // sixth element in the array 
+    .set(true, 'we are open :D') // seventh element in the array 
+    .set(false, 'we are closed :(') // highth element in the array 
+
+console.log(rest.get('name')) // to read data from a MAP we use the GET method.
+console.log(rest.get(true)) // to read data from a MAP we use the GET method.
+console.log(rest.get(1)) // to read data from a MAP we use the GET method.
+
+const time = 21
+console.log(rest.get(time > rest.get('open') && time < rest.get('close'))) // we checked if the restaurant is open or closed when the time is 21:00.
+
+console.log(rest.has('categories')) // It's checking if 'categories' is exists in the array and if so it return a boolean value of true, else it returns False.
+
+rest.delete(2) // It's deleting by the key names.
+    // rest.clear() // we can overlap with maps and sets.
+const arr = [1, 2]
+rest.set(arr, 'Test') // add a new key to the original array.
+rest.set(document.querySelector('h1'), 'Heading')
+console.log(rest)
+console.log(rest.size) // the conse shows the length of the array
+
+console.log(rest.get(arr)) // the console shows the arr key
+
+
+/*
 //* SETS
 const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza'])
 
@@ -81,13 +114,15 @@ console.log(ordersSet[0]) // the console will show UNDEFINED because in SET's th
 
 for (const order of ordersSet)
     console.log(order)
+    
+    //* EXAMPLE
+    const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']
+    const orderStaff = [...new Set(staff)]
+    console.log(orderStaff)
+    console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size)
+    */
 
 
-//* EXAMPLE
-const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']
-const orderStaff = [...new Set(staff)]
-console.log(orderStaff)
-console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size)
 
 /*
 //* Property NAMES
