@@ -52,6 +52,43 @@ const restaurant = {
     }
 };
 
+
+//* SETS
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza'])
+
+console.log(ordersSet) // the console will show the new array without the duplicated elements
+
+console.log(new Set('Jonas')) // the console will show us a NEW set that we defined as JONAS and it will seperate it to 5 STR letters
+
+console.log(ordersSet.size) // the console will show us the size of the array ( again he will ignore the duplcate elements)
+console.log(ordersSet.has('Pizza')) // the console will show us if thers a 'PIZZA' in the array and if there is 'PIZZA' then it return a Boolean value of TRUE
+
+console.log(ordersSet.has('Bread')) // the console will show us if thers a 'Bread' in the array and if there is 'Bread' then it return a Boolean value of TRUE and if not it will return a value of FALSE
+
+
+ordersSet.add('Garlic Bread')
+ordersSet.add('Garlic Bread')
+console.log(ordersSet) // the console will show us that 'Garlic bread is added to the array and now the array.length = 4 becuase it's ignoring the duplicate elements
+
+
+ordersSet.delete('Risotto')
+console.log(ordersSet) // the console will show us that 'Risotto' is deleted and removed from the original array 
+
+console.log(ordersSet[0]) // the console will show UNDEFINED because in SET's there is no indexes and in fact there is no way of getting values out of a set
+
+// ordersSet.clear() // clear is to basically delete all of the elements
+// console.log(ordersSet)
+
+for (const order of ordersSet)
+    console.log(order)
+
+
+//* EXAMPLE
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']
+const orderStaff = [...new Set(staff)]
+console.log(orderStaff)
+console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size)
+
 /*
 //* Property NAMES
 const properties = Object.keys(hours)
@@ -345,8 +382,8 @@ const game = {
     },
 };
 
+/*
 //* TK - 2
-
 // 1)
 for (const [i, player] of game.scored.entries())
     console.log(`Goal ${i+1}:${player}`)
@@ -364,3 +401,4 @@ for (const [team, odd] of Object.entries(game.odds)) {
     const teamStr = team === 'x' ? 'draw' : `Victory ${game[team]}`
     console.log(`Odd of ${teamStr} ${odd}`)
 }
+*/
