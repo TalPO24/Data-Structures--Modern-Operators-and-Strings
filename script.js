@@ -5,34 +5,35 @@ const flights =
     '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+const weekdays = ['mon', 'tue', 'wen', 'thu', 'fri', 'sat', 'sun']
+const hours = {
+    [weekdays[3]]: {
+        open: 12,
+        close: 22,
+    },
+    [weekdays[4]]: {
+        open: 11,
+        close: 23,
+    },
+    [weekdays[5]]: {
+        open: 0, // Open 24 hours
+        close: 24,
+    }
+};
+
 const restaurant = {
     name: 'Classico Italiano',
     location: 'Via Angelo Tavanti 23, Firenze, Italy',
     categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
     starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
     mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+    hours,
 
-    openingHours: {
-        thu: {
-            open: 12,
-            close: 22,
-        },
-        fri: {
-            open: 11,
-            close: 23,
-        },
-        sat: {
-            open: 0, // Open 24 hours
-            close: 24,
-        },
-
-    },
-
-    order: function(starterIndex, mainIndex) {
+    order(starterIndex, mainIndex) {
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
     },
 
-    orderDelivery: function({
+    orderDelivery({
         time = '20:00',
         address,
         mainIndex = 1,
@@ -41,16 +42,39 @@ const restaurant = {
         console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} 
         will be delivered to ${address} at ${time}`)
     },
-    orderPasta: function(ing1, ing2, ing3) {
+    orderPasta(ing1, ing2, ing3) {
         console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`)
     },
 
-    orderPizza: function(mainIngridients, ...otherIngridients) {
+    orderPizza(mainIngridients, ...otherIngridients) {
         console.log(mainIngridients)
         console.log(otherIngridients)
     }
-
 };
+
+/*
+//* Property NAMES
+const properties = Object.keys(hours)
+console.log(properties)
+
+let openStr = `We are open on ${properties.length} days:`;
+for (const day of properties) {
+    openStr += `${day},`
+}
+console.log(openStr)
+
+//* property VALUES
+const values = Object.values(hours)
+console.log(values)
+
+//* Entire object
+const entries = Object.entries(hours)
+console.log(entries)
+
+for (const [day, { open, close }] of entries) {
+    console.log(`On ${day} we open at ${open} and close at ${close}`)
+}
+*/
 
 /*
 const rest1 = {
@@ -226,7 +250,60 @@ const { fri: { open: o, close: c } } = openingHours
 console.log(o, c)
 */
 
-//* TK
+
+
+//* TK - 1
+
+
+
+/*
+// 1)
+const [players1, players2] = game.players
+console.log(players1, players2)
+
+// 2)
+const [gk, ...fieldPlayers] = game.players
+console.log(gk, fieldPlayers)
+
+// 3)
+const allPlayers = [...players1, ...players2]
+console.log(allPlayers)
+
+// 4)
+const players1Final = [...players1, 'Thiago', 'Coutinho', "Periscic"]
+console.log(players1Final)
+
+// 5)
+const { odds: { team1, x: draw, team2 } } = game
+console.log(draw, team1, team2)
+
+// 6)
+const printGoal = function(...players) {
+        console.log(`${players.length} goals were scored`)
+    }
+    // printGoal('Davies', 'Muller', 'Lewandowski', 'Kimmich')
+    // printGoal('Davies', 'Muller')
+printGoal(...game.scored)
+
+// 7)
+team1 < team2 && console.log('Team 1 is more likly to win')
+team1 > team2 && console.log('Team 2 is more likly to win')
+
+*/
+
+/*
+//* The for-of loop
+const menu = [...restaurant.starterMenu, ...restaurant.starterMenu]
+
+for (const item of menu) console.log(item)
+
+for (const [i, el] of menu.entries()) {
+    // console.log(item)
+    console.log(`${i + 1} : ${el}`)
+}
+*/
+
+
 const game = {
     team1: 'Bayern Munich',
     team2: 'Borrussia Dortmund',
@@ -268,34 +345,22 @@ const game = {
     },
 };
 
+//* TK - 2
+
 // 1)
-const [players1, players2] = game.players
-console.log(players1, players2)
+for (const [i, player] of game.scored.entries())
+    console.log(`Goal ${i+1}:${player}`)
 
 // 2)
-const [gk, ...fieldPlayers] = game.players
-console.log(gk, fieldPlayers)
+const odds = Object.values(game.odds)
+let average = 0
+for (const odd of odds)
+    average += odd
+average /= odds.length
+console.log(average)
 
 // 3)
-const allPlayers = [...players1, ...players2]
-console.log(allPlayers)
-
-// 4)
-const players1Final = [...players1, 'Thiago', 'Coutinho', "Periscic"]
-console.log(players1Final)
-
-// 5)
-const { odds: { team1, x: draw, team2 } } = game
-console.log(draw, team1, team2)
-
-// 6)
-const printGoal = function(...players) {
-        console.log(`${players.length} goals were scored`)
-    }
-    // printGoal('Davies', 'Muller', 'Lewandowski', 'Kimmich')
-    // printGoal('Davies', 'Muller')
-printGoal(...game.scored)
-
-// 7)
-team1 < team2 && console.log('Team 1 is more likly to win')
-team1 > team2 && console.log('Team 2 is more likly to win')
+for (const [team, odd] of Object.entries(game.odds)) {
+    const teamStr = team === 'x' ? 'draw' : `Victory ${game[team]}`
+    console.log(`Odd of ${teamStr} ${odd}`)
+}
