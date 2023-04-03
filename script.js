@@ -52,7 +52,42 @@ const restaurant = {
     }
 };
 
-//* MAPS
+const question = new Map([
+    ['question', 'What is the best programming language in the world ?'],
+    [1, 'C'],
+    [2, 'JAVA'],
+    [3, 'JavaScript'],
+    ['correct', 3],
+    [true, 'Correct', '🎉'],
+    [false, 'Try again!'],
+])
+console.log(question)
+
+// Convert object to map 
+console.log(Object.entries(hours))
+const hoursMap = new Map(Object.entries(hours))
+console.log(hoursMap)
+
+// Quiz app
+console.log(question.get('question'))
+for (const [key, value] of question) {
+    if (typeof key === 'number')
+        console.log(`Answer ${key}:${value}`)
+}
+
+// const answer = Number(prompt('Your answer'))
+const answer = 3
+console.log(answer)
+console.log(question.get(question.get('correct') === answer))
+
+// Convert map to array
+console.log(...question)
+    // console.log(question.entries())
+console.log([...question.keys()])
+console.log([...question.values()])
+
+/*
+//* MAPS : Fundementals
 // MAP is a data structure that we can use to map values to keys. So, just like an object data is stored in key value pairs in maps.
 
 const rest = new Map()
@@ -83,7 +118,7 @@ console.log(rest)
 console.log(rest.size) // the conse shows the length of the array
 
 console.log(rest.get(arr)) // the console shows the arr key
-
+*/
 
 /*
 //* SETS
