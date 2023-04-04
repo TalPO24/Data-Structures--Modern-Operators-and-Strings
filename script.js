@@ -52,41 +52,92 @@ const restaurant = {
     }
 };
 
-/*
-const question = new Map([
-    ['question', 'What is the best programming language in the world ?'],
-    [1, 'C'],
-    [2, 'JAVA'],
-    [3, 'JavaScript'],
-    ['correct', 3],
-    [true, 'Correct', '🎉'],
-    [false, 'Try again!'],
-])
-console.log(question)
+const airLine = `Tap Air Portugal` // NORMAL STRING
+const plane = `A320` // NORMAL STRING
+console.log(plane[0]) // It will show us the first letter of the string (position 0)
+console.log(plane[1]) // It will show us the second letter of the string (position 1)
+console.log(plane[2]) // It will show us the third letter of the string (position 2)
+console.log(`B737` [0]) // we can do the same thing with just the string 
 
-// Convert object to map 
-console.log(Object.entries(hours))
-const hoursMap = new Map(Object.entries(hours))
-console.log(hoursMap)
+console.log(airLine.length) // It will show us the amount of letters in the string 
+console.log('B737'.length) // we can do the same thing with just the string
 
-// Quiz app
-console.log(question.get('question'))
-for (const [key, value] of question) {
-    if (typeof key === 'number')
-        console.log(`Answer ${key}:${value}`)
+// because we have in the string two letters of 'r' and we want to check how they are positioned in the STRING: 
+console.log(airLine.indexOf('r')) // It will show us where the FIRST 'r' is positioned in the string. 
+console.log(airLine.lastIndexOf('r')) // It will show us where the LAST 'r' is positioned in the string. 
+
+// we can also search for entire words
+console.log(airLine.indexOf('Portugal')) // It's case sensitive so we need to check that the spelling is correct.
+console.log(airLine.indexOf('portugal')) // The console will show us that portugal is in position -1 because it couldn't find it because the spelling is incorrect, the letter 'p' is in lower case.
+
+console.log(airLine.slice(4)) // the slice method is slicing the first (4) characters of the STRING it is also calld SUBSTRING.
+
+console.log(airLine.slice(4, 7))
+
+
+console.log(airLine.indexOf('Portugal'))
+console.log(airLine.slice(0, airLine.indexOf(' ')))
+console.log(airLine.slice(airLine.lastIndexOf(' ') + 1))
+
+console.log(airLine.slice(-2))
+console.log(airLine.slice(1, -1))
+
+const checkMiddleSeat = function(seat) {
+    const s = seat.slice(-1)
+    if (s === 'B' || s === 'E')
+        console.log(`You got the middle seat`)
+    else {
+        console.log(`you got lucky`)
+    }
 }
+checkMiddleSeat('11B')
+checkMiddleSeat('23C')
+checkMiddleSeat('3E')
 
-// const answer = Number(prompt('Your answer'))
-const answer = 3
-console.log(answer)
-console.log(question.get(question.get('correct') === answer))
+console.log(new String('Jonas'))
+console.log(typeof new String('Jonas')) // OBJECT
+console.log(typeof new String('Jonas').slice(1)) // STRING
 
-// Convert map to array
-console.log(...question)
-    // console.log(question.entries())
-console.log([...question.keys()])
-console.log([...question.values()])
-*/
+
+
+
+
+
+/*
+    const question = new Map([
+        ['question', 'What is the best programming language in the world ?'],
+        [1, 'C'],
+        [2, 'JAVA'],
+        [3, 'JavaScript'],
+        ['correct', 3],
+        [true, 'Correct', '🎉'],
+        [false, 'Try again!'],
+    ])
+    console.log(question)
+
+    // Convert object to map 
+    console.log(Object.entries(hours))
+    const hoursMap = new Map(Object.entries(hours))
+    console.log(hoursMap)
+
+    // Quiz app
+    console.log(question.get('question'))
+    for (const [key, value] of question) {
+        if (typeof key === 'number')
+            console.log(`Answer ${key}:${value}`)
+    }
+
+    // const answer = Number(prompt('Your answer'))
+    const answer = 3
+    console.log(answer)
+    console.log(question.get(question.get('correct') === answer))
+
+    // Convert map to array
+    console.log(...question)
+        // console.log(question.entries())
+    console.log([...question.keys()])
+    console.log([...question.values()])
+    */
 
 
 /*
@@ -503,6 +554,7 @@ const gameEvents = new Map([
     [92, '🔶 Yellow card'],
 ]);
 
+/*
 // 1)
 const events = [...new Set(gameEvents.values())]
 console.log(events)
@@ -516,5 +568,6 @@ console.log(`An event happened, on average, every ${90 / gameEvents.size} minute
 
 // 4)
 for (const [key, value] of gameEvents) {
-    (typeof key === 'number' && key < 45 ? console.log(`[first half] ${key}:${value}`) : console.log(`[second half] ${key}:${value}`))
+    (typeof key === 'number' && key <= 45 ? console.log(`[first half] ${key}:${value}`) : console.log(`[second half] ${key}:${value}`))
 }
+*/
