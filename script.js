@@ -51,7 +51,8 @@ const restaurant = {
         console.log(otherIngridients)
     }
 };
-
+/*
+//* Working With Strings Part-1 
 const airLine = `Tap Air Portugal` // NORMAL STRING
 const plane = `A320` // NORMAL STRING
 console.log(plane[0]) // It will show us the first letter of the string (position 0)
@@ -98,9 +99,65 @@ console.log(new String('Jonas'))
 console.log(typeof new String('Jonas')) // OBJECT
 console.log(typeof new String('Jonas').slice(1)) // STRING
 
+const airline = `Tap Air Portugal`
+
+console.log(airLine.toLowerCase()) // toLowerCase method is converting the STRING to lower case.
+console.log(airLine.toUpperCase()) // toUpperCase method is converting the STRING to upper case.
+*/
+
+//* Working with Strings Part-2
+// Fix capitalization in name
+const passenger = 'JonAS'
+const passengerLower = passenger.toLowerCase()
+const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1)
+console.log(passengerCorrect)
+
+// Comparing emails
+const email = 'hello@jonas.io'
+const loginEmail = '     Hello@Jonas.Io \n' // here we have a white space
+    // const lowerEmail = loginEmail.toLowerCase()
+    // const trimmedEmail = lowerEmail.trim() // The trim method is a method for cutting the white spaces
+
+const normalizedEmail = loginEmail.toLowerCase().trim()
+console.log(normalizedEmail)
+
+// replacing
+const priceGB = '288,97£'
+const priceUS = priceGB.replace('£', '$').replace(',', '.') // The REPLACE method is replacing the argument with another argument.
+console.log(priceUS)
+
+const announcment = 'All passengers come to boarding door 23. Boarding door 23!'
+    // console.log(announcment.replace('door', 'gate'))
+    // console.log(announcment.replace(/door/g, 'gate'))
+
+console.log(announcment.replaceAll('door', 'gate')) // The replaceAll method is replacing all the argumnts in one time.
+
+// Booleans
+const planes = 'Airbus A320neo'
+    // The method INCLUDES is checking if the string includes what we looking for, and it returns a boolean value of true or false.
+console.log(planes.includes('A320'))
+console.log(planes.includes('boing'))
 
 
+// The method 'startsWith' is checking if the string starts with the letters we provided, and it returns a boolean value of true or false.
+console.log(planes.startsWith('Air'))
 
+if (planes.startsWith('Airbus') && planes.endsWith('neo')) {
+    console.log('Part of hte NEW Airbus family')
+}
+
+// Practice exercise
+const checkBaggage = function(items) {
+    const baggage = items.toLowerCase()
+    if (baggage.includes('knife') || baggage.includes('gun')) {
+        console.log('You are not alowed on board')
+    } else {
+        console.log('Welcome aboard!')
+    }
+}
+checkBaggage('I have a laptop, some food and pocket Knife')
+checkBaggage('Socks and camera')
+checkBaggage('Got some snacks and a gun for protection')
 
 
 /*
