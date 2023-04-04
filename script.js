@@ -104,7 +104,7 @@ const airline = `Tap Air Portugal`
 console.log(airLine.toLowerCase()) // toLowerCase method is converting the STRING to lower case.
 console.log(airLine.toUpperCase()) // toUpperCase method is converting the STRING to upper case.
 */
-
+/*
 //* Working with Strings Part-2
 // Fix capitalization in name
 const passenger = 'JonAS'
@@ -158,43 +158,94 @@ const checkBaggage = function(items) {
 checkBaggage('I have a laptop, some food and pocket Knife')
 checkBaggage('Socks and camera')
 checkBaggage('Got some snacks and a gun for protection')
+*/
+
+//* Working with Strings Part-3
+console.log('a+very+nice+string'.split('+')) // The SPLIT method is allowing us to split the string.
+console.log('Tal Poris'.split(' '))
+
+const [firstName, lastName] = 'Tal Poris'.split(' ')
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ') // the JOIN method combining strings.
+console.log(newName)
+
+const capitalizeName = function(name) {
+    const names = name.split(' ')
+    const namesUpper = []
+
+    for (const n of names) {
+        // namesUpper.push(n[0].toUpperCase() + n.slice(1))
+        namesUpper.push(n.replace(n[0], n[0].toUpperCase()))
+    }
+    console.log(namesUpper.join(' '))
+}
+
+capitalizeName('jessica and smith davis')
+capitalizeName('tal poris')
+
+// Padding
+const message = 'Go to gate 23!'
+console.log(message.padStart(25, '+').padEnd(30, '+'))
+console.log('tal'.padStart(20, '+').padEnd(30, '+'))
+
+const maskCreditCard = function(number) {
+    const str = number + ''
+    const last = str.slice(-4)
+    return last.padStart(str.length, '*')
+}
+
+console.log(maskCreditCard(43378367))
+console.log(maskCreditCard(43378363864647))
+console.log(maskCreditCard('8764585648758474875683'))
+
+// Repeat
+const message2 = 'Bad wether... All Departures Delayed...'
+console.log(message2.repeat(5)) // The REPEATE method is repeating the string
+
+const planesInline = function(n) {
+    console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`)
+}
+
+planesInline(5)
+planesInline(3)
+planesInline(12)
+
 
 
 /*
-    const question = new Map([
-        ['question', 'What is the best programming language in the world ?'],
-        [1, 'C'],
-        [2, 'JAVA'],
-        [3, 'JavaScript'],
-        ['correct', 3],
-        [true, 'Correct', '🎉'],
-        [false, 'Try again!'],
-    ])
-    console.log(question)
+        const question = new Map([
+            ['question', 'What is the best programming language in the world ?'],
+            [1, 'C'],
+            [2, 'JAVA'],
+            [3, 'JavaScript'],
+            ['correct', 3],
+            [true, 'Correct', '🎉'],
+            [false, 'Try again!'],
+        ])
+        console.log(question)
 
-    // Convert object to map 
-    console.log(Object.entries(hours))
-    const hoursMap = new Map(Object.entries(hours))
-    console.log(hoursMap)
+        // Convert object to map 
+        console.log(Object.entries(hours))
+        const hoursMap = new Map(Object.entries(hours))
+        console.log(hoursMap)
 
-    // Quiz app
-    console.log(question.get('question'))
-    for (const [key, value] of question) {
-        if (typeof key === 'number')
-            console.log(`Answer ${key}:${value}`)
-    }
+        // Quiz app
+        console.log(question.get('question'))
+        for (const [key, value] of question) {
+            if (typeof key === 'number')
+                console.log(`Answer ${key}:${value}`)
+        }
 
-    // const answer = Number(prompt('Your answer'))
-    const answer = 3
-    console.log(answer)
-    console.log(question.get(question.get('correct') === answer))
+        // const answer = Number(prompt('Your answer'))
+        const answer = 3
+        console.log(answer)
+        console.log(question.get(question.get('correct') === answer))
 
-    // Convert map to array
-    console.log(...question)
-        // console.log(question.entries())
-    console.log([...question.keys()])
-    console.log([...question.values()])
-    */
+        // Convert map to array
+        console.log(...question)
+            // console.log(question.entries())
+        console.log([...question.keys()])
+        console.log([...question.values()])
+        */
 
 
 /*
