@@ -160,6 +160,7 @@ checkBaggage('Socks and camera')
 checkBaggage('Got some snacks and a gun for protection')
 */
 
+/*
 //* Working with Strings Part-3
 console.log('a+very+nice+string'.split('+')) // The SPLIT method is allowing us to split the string.
 console.log('Tal Poris'.split(' '))
@@ -208,7 +209,7 @@ const planesInline = function(n) {
 planesInline(5)
 planesInline(3)
 planesInline(12)
-
+*/
 
 
 /*
@@ -679,3 +680,29 @@ for (const [key, value] of gameEvents) {
     (typeof key === 'number' && key <= 45 ? console.log(`[first half] ${key}:${value}`) : console.log(`[second half] ${key}:${value}`))
 }
 */
+
+
+//* TK-4
+/*
+underscore_case
+first_name
+Some_Variable
+Calculate_AGE
+delayed_departure
+*/
+
+document.body.append(document.createElement('textarea'))
+document.body.append(document.createElement('button'))
+
+
+document.querySelector('button').addEventListener('click', function() {
+    const text = document.querySelector("textarea").value
+    const rows = text.split('\n')
+    console.log(rows)
+
+    for (const [i, row] of rows.entries()) {
+        const [first, second] = row.toLowerCase().trim().split('_')
+        const output = `${first}${second.replace(second[0], second[0].toUpperCase())}`
+        console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`)
+    }
+})
